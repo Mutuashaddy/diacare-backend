@@ -20,7 +20,7 @@ return new class extends Migration
             // Unit (use mmHg, the international standard)
             $table->enum('unit', ['mmHg'])->default('mmHg');
 
-            // Measurement context — used in real clinics and research
+            // Measurement  details
             $table->enum('measurement_position', [
                 'Sitting',
                 'Standing',
@@ -33,7 +33,7 @@ return new class extends Migration
             ])->default('Left Arm');
 
             // When  the reading was taken
-            $table->enum('measurement_type', [
+            $table->enum('measurement_time', [
                 'Morning',
                 'Evening',
                 'Before Medication',

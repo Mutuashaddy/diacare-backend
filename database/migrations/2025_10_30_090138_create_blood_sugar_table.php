@@ -19,7 +19,7 @@ return new class extends Migration
             $table->enum('unit', ['mmol/L', 'mg/dL'])->default('mmol/L');
 
             // When the reading was taken
-            $table->enum('measurement_type', [
+            $table->enum('measurement_time', [
                 'Fasting', 
                 'Before Meal', 
                 'After Meal', 

@@ -19,6 +19,8 @@ return new class extends Migration
         $table->string('gender');
         $table->string('diabetes_type');
         $table->string('emergency_contact');
+        $table->string('doctor`s_number')->nullable();
+        $table->integer('age')->nullable(); 
         $table->timestamps();
     });
 }
