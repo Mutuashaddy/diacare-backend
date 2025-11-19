@@ -2,48 +2,54 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\Medication;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MedicationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
+    // Save medication
     public function store(Request $request)
     {
-        //
+        // Ensure user is authenticated
+        if (!Auth::check()) {
+            return response()->json([
+                "message" => "Unauthorized. Please log in first."
+            ], 401);
+        }
+
+        // Validate data
+        $validated = $request->validate([
+            'medicine_name' => 'required|string|max:255',
+            'dosage' => 'required|string|max:255',
+            'time_to_take' => 'required',
+            'notes' => 'nullable|string',
+        ]);
+
+        // Create medication
+        $medication = Medication::create([
+            'user_id' => Auth::id(),
+            'medicine_name' => $validated['medicine_name'],
+            'dosage' => $validated['dosage'],
+            'time_to_take' => $validated['time_to_take'],
+            'notes' => $validated['notes'] ?? null,
+        ]);
+
+        return response()->json([
+            "message" => "Medication saved successfully",
+            "data" => $medication
+        ], 201);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    // Get user medications
+    public function index()
     {
-        //
-    }
+        if (!Auth::check()) {
+            return response()->json([
+                "message" => "Unauthorized. Please log in first."
+            ], 401);
+        }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return Medication::where('user_id', Auth::id())->get();
     }
 }
