@@ -13,7 +13,6 @@ class Medication extends Model
         'user_id',
         'medicine_name',
         'dosage',
-        'time_to_take',
         'notes',
     ];
 }

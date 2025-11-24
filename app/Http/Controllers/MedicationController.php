@@ -22,7 +22,6 @@ class MedicationController extends Controller
         $validated = $request->validate([
             'medicine_name' => 'required|string|max:255',
             'dosage' => 'required|string|max:255',
-            'time_to_take' => 'required',
             'notes' => 'nullable|string',
         ]);
 
@@ -31,7 +30,6 @@ class MedicationController extends Controller
             'user_id' => Auth::id(),
             'medicine_name' => $validated['medicine_name'],
             'dosage' => $validated['dosage'],
-            'time_to_take' => $validated['time_to_take'],
             'notes' => $validated['notes'] ?? null,
         ]);
 
