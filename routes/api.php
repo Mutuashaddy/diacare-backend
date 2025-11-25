@@ -7,36 +7,51 @@ use App\Http\Controllers\BloodPressureController;
 use App\Http\Controllers\BloodSugarController;
 use App\Http\Controllers\MedicationController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ReplyController;
 
 // Public routes
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
-
-
-
 // Protected routes
 Route::middleware('auth:sanctum')->group(function () {
+
     Route::post('/bio-data', [AuthController::class, 'storeBioData']);
     Route::get('/user', [AuthController::class, 'user']);
     Route::post('/logout', [AuthController::class, 'logout']);
+
     Route::post('/biodata', [BiodataController::class, 'store']);
     Route::get('/biodata', [BiodataController::class, 'show']);
     Route::put('/biodata', [BiodataController::class, 'update']);
     Route::delete('/biodata', [BiodataController::class, 'destroy']);
-     Route::get('/posts', [PostController::class, 'index']);
+
+    Route::get('/posts', [PostController::class, 'index']);
     Route::post('/posts', [PostController::class, 'store']);
     Route::get('/posts/{id}', [PostController::class, 'show']);
     Route::put('/posts/{id}', [PostController::class, 'update']);
     Route::delete('/posts/{id}', [PostController::class, 'destroy']);
-    Route::get('/medications', [MedicationController::class, 'index']);
-Route::post('/medications', [MedicationController::class, 'store']);
-Route::get('/medications/{id}', [MedicationController::class, 'show']);
-Route::put('/medications/{id}', [MedicationController::class, 'update']);
-Route::delete('/medications/{id}', [MedicationController::class, 'destroy']);
-Route::post('/blood-sugar', [BloodSugarController::class, 'store']);
-Route::get('/blood-sugar', [BloodSugarController::class, 'index']);
-Route::post('/blood-pressure', [BloodPressureController::class, 'store']);
-Route::get('/blood-pressure', [BloodPressureController::class, 'index']);
 
-});
+    Route::get('/medications', [MedicationController::class, 'index']);
+    Route::post('/medications', [MedicationController::class, 'store']);
+    Route::get('/medications/{id}', [MedicationController::class, 'show']);
+    Route::put('/medications/{id}', [MedicationController::class, 'update']);
+    Route::delete('/medications/{id}', [MedicationController::class, 'destroy']);
+
+    Route::post('/blood-sugar', [BloodSugarController::class, 'store']);
+    Route::get('/blood-sugar', [BloodSugarController::class, 'index']);
+    Route::get('/blood-sugar/{id}', [BloodSugarController::class, 'show']);
+    Route::put('/blood-sugar/{id}', [BloodSugarController::class, 'update']);
+    Route::delete('/blood-sugar/{id}', [BloodSugarController::class, ' destroy']);
+
+    Route::post('/blood-pressure', [BloodPressureController::class, 'store']);
+    Route::get('/blood-pressure', [BloodPressureController::class, 'index']);
+    Route::get('/blood-pressure/{id}', [BloodPressureController::class, 'show']);
+    Route::put('/blood-pressure/{id}', [BloodPressureController::class, 'update']);
+    Route::delete('/blood-pressure/{id}', [BloodPressureController::class, 'destroy']);
+
+    Route::post('/posts/{post_id}/reply', [ReplyController::class, 'store']);
+    Route::get('/posts/{post_id}/replies', [ReplyController::class, 'index']);
+
+
+}); 
+

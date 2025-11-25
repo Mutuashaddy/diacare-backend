@@ -9,6 +9,7 @@ use Illuminate\Testing\Fluent\Concerns\Has;
 class BloodPressure extends Model
 {
    use HasFactory  ; 
+    protected $table = 'blood_pressure_records'; 
 
          protected $fillable = [
         'user_id',
