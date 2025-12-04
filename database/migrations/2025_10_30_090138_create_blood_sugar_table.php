@@ -10,26 +10,21 @@ return new class extends Migration
     {
         Schema::create('blood_sugar_records', function (Blueprint $table) {
             $table->id();
+
+            
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
 
-            // Blood sugar value
+            
             $table->float('sugar_level');
 
-            // Unit of measurement (standard medical units)
-            $table->enum('unit', ['mmol/L', 'mg/dL'])->default('mmol/L');
+            
+            $table->enum('unit', ['mmol/L', 'mg/dL']);
 
-            // When the reading was taken
-            $table->enum('measurement_time', [
-                'Fasting', 
-                'Before Meal', 
-                'After Meal', 
-                'Random', 
-                'Before Sleep'
-            ])->default('Random');
+            
+            $table->string('measurement_time'); 
 
-    // Timestamp for when the reading was actually taken
-            $table->timestamp('measured_at')->useCurrent();
-
+            
+            $table->enum('measured_at', ['Morning', 'Noon', 'Afternoon', 'Evening', 'Night']);
 
             $table->timestamps();
         });

@@ -7,14 +7,10 @@ use Illuminate\Http\Request;
 
 class BloodSugarController extends Controller
 {
-    
-    /**
-     * Display all blood sugar records for logged-in user
-     */
     public function index()
     {
         $records = BloodSugar::where('user_id', auth()->id())
-            ->orderBy('measured_at', 'desc')
+            ->orderBy('id', 'desc')
             ->get();
 
         return response()->json([
@@ -23,24 +19,21 @@ class BloodSugarController extends Controller
         ]);
     }
 
-    /**
-     * Store new record
-     */
     public function store(Request $request)
     {
         $validated = $request->validate([
             'sugar_level' => 'required|numeric',
             'unit' => 'required|in:mmol/L,mg/dL',
-            'measurement_time' => 'required|in:Fasting,Before Meal,After Meal,Random,Before Sleep',
-            'measured_at' => 'nullable|date'
+            'measurement_time' => 'required|string',
+            'measured_at' => 'required|string|in:Morning,Noon,Afternoon,Evening,Night'
         ]);
 
         $record = BloodSugar::create([
             'user_id' => auth()->id(),
-            'sugar_level' => $validated['sugar_level'], 
+            'sugar_level' => $validated['sugar_level'],
             'unit' => $validated['unit'],
             'measurement_time' => $validated['measurement_time'],
-            'measured_at' => $validated['measured_at'] ?? now(),
+            'measured_at' => $validated['measured_at'],
         ]);
 
         return response()->json([
@@ -50,9 +43,6 @@ class BloodSugarController extends Controller
         ]);
     }
 
-    /**
-     * Show a single record
-     */
     public function show($id)
     {
         $record = BloodSugar::where('user_id', auth()->id())
@@ -72,9 +62,6 @@ class BloodSugarController extends Controller
         ]);
     }
 
-    /**
-     * Update record
-     */
     public function update(Request $request, $id)
     {
         $record = BloodSugar::where('user_id', auth()->id())
@@ -91,8 +78,8 @@ class BloodSugarController extends Controller
         $validated = $request->validate([
             'sugar_level' => 'nullable|numeric',
             'unit' => 'nullable|in:mmol/L,mg/dL',
-            'measurement_time' => 'nullable|in:Fasting,Before Meal,After Meal,Random,Before Sleep',
-            'measured_at' => 'nullable|date',
+            'measurement_time' => 'nullable|string',
+            'measured_at' => 'nullable|string|in:Morning,Noon,Afternoon,Evening,Night'
         ]);
 
         $record->update($validated);
@@ -104,9 +91,6 @@ class BloodSugarController extends Controller
         ]);
     }
 
-    /**
-     * Delete record
-     */
     public function destroy($id)
     {
         $record = BloodSugar::where('user_id', auth()->id())
