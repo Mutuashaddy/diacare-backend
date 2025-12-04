@@ -16,11 +16,12 @@ return new class extends Migration
         $table->foreignId('user_id')->constrained()->onDelete('cascade');
         $table->string('full_name');
         $table->date('dob');
+         $table->integer('age')->nullable(); 
         $table->string('gender');
         $table->string('diabetes_type');
         $table->string('emergency_contact');
         $table->string('doctor`s_number')->nullable();
-        $table->integer('age')->nullable(); 
+       
         $table->timestamps();
     });
 }

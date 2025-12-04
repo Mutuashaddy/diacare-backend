@@ -5,27 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Reminder extends Model
+class EmergencyContact extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'medication_id',
         'user_id',
-        'reminder_time',
-        'repeat_daily',
-        'active',
-        'notes',
+        'caregiver_name',
+        'caregiver_number',
+        'doctor_name',
+        'doctor_number',
+        'hospital_name',
+        'hospital_number',
+        'hospital_location',
     ];
 
-    // Relationships
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function medication()
-    {
-        return $this->belongsTo(Medication::class);
     }
 }

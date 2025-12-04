@@ -8,6 +8,9 @@ use App\Http\Controllers\BloodSugarController;
 use App\Http\Controllers\MedicationController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ReplyController;
+use App\Http\Controllers\ReminderController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\EmergencyContactController;
 
 // Public routes
 Route::post('/register', [AuthController::class, 'register']);
@@ -51,6 +54,11 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::post('/posts/{post_id}/reply', [ReplyController::class, 'store']);
     Route::get('/posts/{post_id}/replies', [ReplyController::class, 'index']);
+    ///profile reminder and replise
+
+     Route::post('/emergency', [EmergencyContactController::class, 'store']);
+    Route::get('/emergency', [EmergencyContactController::class, 'show']);
+
 
 
 }); 
