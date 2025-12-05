@@ -61,6 +61,12 @@ Route::middleware('auth:sanctum')->group(function () {
      Route::post('/emergency', [EmergencyContactController::class, 'store']);
     Route::get('/emergency', [EmergencyContactController::class, 'show']);
 
+  Route::post('/reminders', [ReminderController::class, 'store']);
+Route::get('/reminders', [ReminderController::class, 'index']);
+Route::delete('/reminders/{id}', [ReminderController::class, 'destroy']);
+
+
+
 
 
 }); 

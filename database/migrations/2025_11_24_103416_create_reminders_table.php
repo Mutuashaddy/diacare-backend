@@ -10,11 +10,12 @@ return new class extends Migration
     {
         Schema::create('reminders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('medication_id')->constrained()->onDelete('cascade');
+
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->time('reminder_time');
-            $table->boolean('repeat_daily')->default(true);
-            $table->boolean('active')->default(true);
+
+            $table->string('medicine_name');
+            $table->time('time_to_take');
+
             $table->timestamps();
         });
     }

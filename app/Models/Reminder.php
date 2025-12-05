@@ -10,22 +10,8 @@ class Reminder extends Model
     use HasFactory;
 
     protected $fillable = [
-        'medication_id',
         'user_id',
-        'reminder_time',
-        'repeat_daily',
-        'active',
-        'notes',
+        'medicine_name',
+        'time_to_take',
     ];
-
-    // Relationships
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function medication()
-    {
-        return $this->belongsTo(Medication::class);
-    }
 }
