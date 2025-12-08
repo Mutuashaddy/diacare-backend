@@ -50,7 +50,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/blood-pressure', [BloodPressureController::class, 'index']);
     Route::get('/blood-pressure/{id}', [BloodPressureController::class, 'show']);
     Route::put('/blood-pressure/{id}', [BloodPressureController::class, 'update']);
-    Route::delete('/blood-pressure/{id}', [BloodSugarController::class, 'destroy']);
+    Route::delete('/blood-pressure/{id}', [BloodPressureController::class, 'destroy']);
 
 
 
