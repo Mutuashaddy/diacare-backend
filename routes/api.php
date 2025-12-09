@@ -28,11 +28,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/biodata', [BiodataController::class, 'update']);
     Route::delete('/biodata', [BiodataController::class, 'destroy']);
 
-    Route::get('/posts', [PostController::class, 'index']);
-    Route::post('/posts', [PostController::class, 'store']);
-    Route::get('/posts/{id}', [PostController::class, 'show']);
-    Route::put('/posts/{id}', [PostController::class, 'update']);
-    Route::delete('/posts/{id}', [PostController::class, 'destroy']);
 
     Route::get('/medications', [MedicationController::class, 'index']);
     Route::post('/medications', [MedicationController::class, 'store']);
@@ -52,11 +47,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/blood-pressure/{id}', [BloodPressureController::class, 'update']);
     Route::delete('/blood-pressure/{id}', [BloodPressureController::class, 'destroy']);
 
-
-
-    Route::post('/posts/{post_id}/reply', [ReplyController::class, 'store']);
-    Route::get('/posts/{post_id}/replies', [ReplyController::class, 'index']);
-    ///profile reminder and replise
 
      Route::post('/emergency', [EmergencyContactController::class, 'store']);
     Route::get('/emergency', [EmergencyContactController::class, 'show']);
