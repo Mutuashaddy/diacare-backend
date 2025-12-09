@@ -7,43 +7,43 @@ use Illuminate\Http\Request;
 
 class userController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
+     //Display a listing of the data
+     
     public function index()
     {
-        //
+        
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    
+     // Store a newly created data in storage
+     
     public function store(Request $request)
     {
-        //
+        
     }
 
-    /**
-     * Display the specified resource.
-     */
+    
+     //Display data
+     
     public function show(string $id)
     {
-        //
+        
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    
+     // Update the data in storage
+     
     public function update(Request $request, string $id)
     {
-        //
+        
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    
+
+     //deleting data
     public function destroy(string $id)
     {
-        //
+        
     }
 }

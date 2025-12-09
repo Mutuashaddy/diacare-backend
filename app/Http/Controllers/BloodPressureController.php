@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 
 class BloodPressureController extends Controller
 {
-    /**
-     * Display all blood pressure records for the logged-in user.
-     */
+    
+     //Display all blood pressure records for the logged-in user
+     
     public function index()
     {
         $records = BloodPressure::where('user_id', auth()->id())
@@ -22,9 +22,9 @@ class BloodPressureController extends Controller
         ]);
     }
 
-    /**
-     * Store a new blood pressure record.
-     */
+    
+      //Store a new blood pressure record
+     
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -54,9 +54,9 @@ class BloodPressureController extends Controller
         ]);
     }
 
-    /**
-     * Display a single blood pressure record.
-     */
+    
+     //Display a single blood pressure record
+     
     public function show($id)
     {
         $record = BloodPressure::where('user_id', auth()->id())
@@ -76,9 +76,8 @@ class BloodPressureController extends Controller
         ]);
     }
 
-    /**
-     * Update a blood pressure record.
-     */
+    //Update a blood pressure record
+     
     public function update(Request $request, $id)
     {
         $record = BloodPressure::where('user_id', auth()->id())
@@ -112,9 +111,8 @@ class BloodPressureController extends Controller
         ]);
     }
 
-    /**
-     * Delete a blood pressure record.
-     */
+    //Delete a blood pressure record
+     
     public function destroy($id)
     {
         $record = BloodPressure::where('user_id', auth()->id())

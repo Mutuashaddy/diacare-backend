@@ -8,9 +8,8 @@ use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
-    /**
-     * Get the authenticated user's profile
-     */
+   //Get the authenticated user's profile
+     
     public function profile(Request $request)
     {
         return response()->json([
@@ -19,9 +18,9 @@ class ProfileController extends Controller
         ]);
     }
 
-    /**
-     * Update user profile
-     */
+ 
+     // Update user profile
+     
     public function update(Request $request)
     {
         $user = $request->user();

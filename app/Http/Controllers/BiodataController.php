@@ -90,7 +90,7 @@ class BiodataController extends Controller
     }
 
     
-     //Delete  biodata.
+     //Delete  biodata
      
     public function destroy()
     {

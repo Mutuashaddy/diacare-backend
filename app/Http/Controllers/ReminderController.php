@@ -37,9 +37,9 @@ class ReminderController extends Controller
         ], 201);
     }
 
-    // -------------------------------
+    
     // DELETE REMINDER
-    // -------------------------------
+    
     public function destroy($id)
     {
         $reminder = Reminder::where('user_id', auth()->id())
